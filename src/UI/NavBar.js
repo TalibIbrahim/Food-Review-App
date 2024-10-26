@@ -1,21 +1,46 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import BytersLogo from "../Assets/BYTE_logo.png";
 import "./Navbar.css";
+
 const NavBar = () => {
+  const location = useLocation();
+
+  const isHomePage = location.pathname === "/";
+
+  const activeLinkStyle = isHomePage
+    ? "px-6 py-2  border-b-4 links-active mx-4"
+    : "px-6 py-2  border-b-4 links-active-2 mx-4";
+
+  const defaultLinkStyle = isHomePage
+    ? "px-6 mx-4 py-2 links rounded-lg"
+    : "px-6 mx-4 py-2 links-2 rounded-lg";
+
+  const defaultLoginStyle = isHomePage
+    ? "button text-white px-4 py-2 rounded-lg"
+    : "button-nav-2 text-white px-4 py-2 rounded-lg";
+
+  const logoStyle = isHomePage
+    ? "w-20 mt-2 custom-transition"
+    : "w-20 mt-2 btn-nav-2 custom-transition";
+
   return (
-    <nav className="navbar-bg text-white font-medium text-xl p-5 px-10">
+    <nav
+      className={
+        isHomePage
+          ? "navbar-bg text-white font-medium text-xl p-5 px-10"
+          : "navbar-style-2 font-medium text-xl p-5 px-10 shadow-md"
+      }
+    >
       <div className="flex items-center justify-between">
         <div>
-          <img src={BytersLogo} className="w-20 mt-2" />
+          <img src={BytersLogo} className={logoStyle} />
         </div>
         <div>
           <ul className="flex items-center justify-between ">
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive
-                  ? "px-2 py-2  border-b-4 links-active mx-4"
-                  : "px-2 mx-4 py-2 links rounded-lg"
+                isActive ? activeLinkStyle : defaultLinkStyle
               }
             >
               Home
@@ -23,9 +48,7 @@ const NavBar = () => {
             <NavLink
               to="/about"
               className={({ isActive }) =>
-                isActive
-                  ? "px-2 py-2  border-b-4 links-active mx-4"
-                  : "px-2 py-2 mx-4 links rounded-lg"
+                isActive ? activeLinkStyle : defaultLinkStyle
               }
             >
               About
@@ -33,9 +56,7 @@ const NavBar = () => {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                isActive
-                  ? "px-2 py-2  border-b-4 links-active mx-4"
-                  : "px-2 py-2 mx-4 links rounded-lg "
+                isActive ? activeLinkStyle : defaultLinkStyle
               }
             >
               Contact
@@ -43,9 +64,7 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="w-48 flex items-center justify-between">
-          <button className="button text-white px-4 py-2 rounded-lg">
-            Login
-          </button>
+          <button className={defaultLoginStyle}>Login</button>
           <button className="button2 text-white px-4 py-2 rounded-lg">
             Sign Up
           </button>

@@ -3,8 +3,6 @@
   object-position: center;
   transform: scale(1);
   position: relative;
-  left: 6em;
-  bottom: 30px;
 }
 .backgroundabout {
   background-color: #fffcf2;
@@ -12,8 +10,51 @@
 .blob-img2 img {
   border-radius: 31% 69% 29% 71% / 35% 37% 63% 65% !important;
   object-position: center;
-  transform: scale(0.8) rotate(-20deg);
+  transform: scale(0.65) rotate(-20deg);
   position: relative;
-  right: 2em;
-  bottom: 8em;
+  right: 1.5em;
+  bottom: 15em;
+}
+
+.blob-img3 img {
+  border-radius: 27% 73% 69% 31% / 75% 36% 64% 25% !important;
+  object-position: center;
+  position: relative;
+}
+
+.blob-img4 img {
+  border-radius: 35% 65% 77% 23% / 35% 55% 45% 65% !important;
+  object-position: center;
+  position: relative;
+  transform: scale(0.65);
+  bottom: 15em;
+}
+
+.w-custom {
+  width: 34em;
+  font-size: 1.09em;
+}
+
+.w-custom2 {
+  width: 54em;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+.h-custom {
+  height: 34em;
+}
+
+.border-color {
+  border-top-color: #eb5e28;
+}
+
+.bg-emailInput {
+  background-color: #e8e8e8;
+  border-radius: 0.5rem 0px 0px 0.5rem;
+}
+
+.btn-bg {
+  background-color: #eb5e28;
+  border-radius: 0px 0.5rem 0.5rem 0px;
 }
