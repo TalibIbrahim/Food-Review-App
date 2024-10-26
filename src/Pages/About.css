@@ -1,0 +1,19 @@
+.blob-img img {
+  border-radius: 70% 30% 53% 47% / 42% 23% 77% 58% !important;
+  object-position: center;
+  transform: scale(1);
+  position: relative;
+  left: 6em;
+  bottom: 30px;
+}
+.backgroundabout {
+  background-color: #fffcf2;
+}
+.blob-img2 img {
+  border-radius: 31% 69% 29% 71% / 35% 37% 63% 65% !important;
+  object-position: center;
+  transform: scale(0.8) rotate(-20deg);
+  position: relative;
+  right: 2em;
+  bottom: 8em;
+}

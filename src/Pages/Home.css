@@ -1,0 +1,15 @@
+.backgrnd-img {
+  width: 100%;
+  height: 44em;
+  z-index: -1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center -150px;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.397) 50%,
+      rgba(0, 0, 0, 0) 100%
+    ),
+    url("../Assets/pizza.jpg"); /* Update this path */
+}

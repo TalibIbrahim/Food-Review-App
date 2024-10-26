@@ -1,18 +1,21 @@
 import { NavLink } from "react-router-dom";
-
+import BytersLogo from "../Assets/BYTE_logo.png";
+import "./Navbar.css";
 const NavBar = () => {
   return (
-    <nav className="bg-primary-500 text-white font-medium text-xl p-5 px-10">
+    <nav className="navbar-bg text-white font-medium text-xl p-5 px-10">
       <div className="flex items-center justify-between">
-        <div>Byters</div>
+        <div>
+          <img src={BytersLogo} className="w-20 mt-2" />
+        </div>
         <div>
           <ul className="flex items-center justify-between ">
             <NavLink
               to="/"
               className={({ isActive }) =>
                 isActive
-                  ? "px-2 py-2  border-b-4 border-slate-50 mx-4"
-                  : "px-2 mx-4 py-2  "
+                  ? "px-2 py-2  border-b-4 links-active mx-4"
+                  : "px-2 mx-4 py-2 links rounded-lg"
               }
             >
               Home
@@ -21,8 +24,8 @@ const NavBar = () => {
               to="/about"
               className={({ isActive }) =>
                 isActive
-                  ? "px-2 py-2  border-b-4 border-slate-50 mx-4"
-                  : "px-2 py-2 mx-4 "
+                  ? "px-2 py-2  border-b-4 links-active mx-4"
+                  : "px-2 py-2 mx-4 links rounded-lg"
               }
             >
               About
@@ -31,8 +34,8 @@ const NavBar = () => {
               to="/contact"
               className={({ isActive }) =>
                 isActive
-                  ? "px-2 py-2  border-b-4 border-slate-50 mx-4"
-                  : "px-2 py-2 mx-4 "
+                  ? "px-2 py-2  border-b-4 links-active mx-4"
+                  : "px-2 py-2 mx-4 links rounded-lg "
               }
             >
               Contact
@@ -40,10 +43,10 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="w-48 flex items-center justify-between">
-          <button className="border border-slate-50 text-white px-4 py-2 rounded-lg">
+          <button className="button text-white px-4 py-2 rounded-lg">
             Login
           </button>
-          <button className="bg-blue-700 text-white px-4 py-2 rounded-lg">
+          <button className="button2 text-white px-4 py-2 rounded-lg">
             Sign Up
           </button>
         </div>
