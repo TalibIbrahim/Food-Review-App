@@ -33,7 +33,7 @@ const NavBar = () => {
     >
       <div className="flex items-center justify-between">
         <div>
-          <img src={BytersLogo} className={logoStyle} />
+          <img src={BytersLogo} alt="brand-logo" className={logoStyle} />
         </div>
         <div>
           <ul className="flex items-center justify-between ">

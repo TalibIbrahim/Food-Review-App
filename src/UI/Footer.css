@@ -1,0 +1,16 @@
+.footer-links ul li {
+  margin-bottom: 1.2em;
+}
+
+.footer-links ul li a {
+  border-bottom: 1px solid transparent;
+  color: #fffcf2;
+}
+
+.footer-links ul li a:hover {
+  border-bottom: 1px solid #fffcf2;
+}
+
+.custom-transition {
+  transition: ease-in-out 0.3s;
+}
