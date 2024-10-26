@@ -2,13 +2,13 @@ import React from "react";
 import NavBar from "../UI/NavBar";
 import Footer from "../UI/Footer";
 
-const LayoutWrapper = ({ children }) => {
+const LayoutWrapper = (props) => {
   return (
-    <div className="bg-neutral-700">
+    <>
       <NavBar />
-      <main>{children}</main>
+      <main>{props.children}</main>
       <Footer />
-    </div>
+    </>
   );
 };
 

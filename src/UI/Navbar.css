@@ -1,0 +1,32 @@
+.navbar-bg {
+  background-color: transparent;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.button {
+  background-color: rgb(255, 255, 255, 0.1);
+  transition: ease-in-out 0.2s;
+}
+.button:hover {
+  background-color: rgb(255, 255, 255, 0.3);
+}
+.button2 {
+  background-color: #eb5e28;
+  transition: ease-in-out 0.2s;
+}
+.button2:hover {
+  background-color: #c84d1c;
+}
+.links-active {
+  border-color: #ccc5b9;
+}
+.links:hover {
+  background-color: #ccc5b927;
+}
+.links {
+  transition: background-color ease-in-out 0.3s;
+}
