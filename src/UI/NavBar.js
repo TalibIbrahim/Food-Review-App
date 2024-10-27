@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import BytersLogo from "../Assets/BYTE_logo.png";
 import "./Navbar.css";
 
@@ -33,7 +33,9 @@ const NavBar = () => {
     >
       <div className="flex items-center justify-between">
         <div>
-          <img src={BytersLogo} alt="brand-logo" className={logoStyle} />
+          <Link to="/">
+            <img src={BytersLogo} alt="brand-logo" className={logoStyle} />{" "}
+          </Link>
         </div>
         <div>
           <ul className="flex items-center justify-between ">
