@@ -4,7 +4,7 @@ import Byters from "../Assets/byterss.jpeg";
 import Meat from "../Assets/meat.jpeg";
 const About = () => {
   return (
-    <div className="backgroundabout flex flex-col justify-center text-center items-center px-60 mt-28">
+    <div className="backgroundabout flex flex-col justify-center text-center items-center px-60 pt-28">
       <section className="flex flex-row">
         <div className="w-4/5 flex flex-col items-center justify-center">
           <h1 className="font-bold text-center text-2xl mb-5">About BYTERS</h1>
@@ -20,12 +20,12 @@ const About = () => {
           </p>
         </div>
         <div className="blob-img w-1/2">
-          <img src={Byters} />
+          <img src={Byters}  alt='blob-image1'/>
         </div>
       </section>
       <section className="flex flex-row h-custom mt-16">
         <div className="blob-img2">
-          <img src={Meat} />
+          <img src={Meat}  alt='blob-image2' />
         </div>
         <div className="mt-32">
           <h1 className="font-bold text-center text-2xl mb-5">
@@ -55,13 +55,13 @@ const About = () => {
           </p>
         </div>
         <div className="blob-img3 w-1/2">
-          <img src={Byters} />
+          <img src={Byters}  alt='blob-image3' />
         </div>
       </section>
 
       <section className="flex flex-row h-custom mt-16">
         <div className="blob-img4">
-          <img src={Meat} />
+          <img src={Meat}   alt='blob-image4'/>
         </div>
         <div className="mt-32">
           <h1 className="font-bold text-center text-2xl mb-5">What We Offer</h1>

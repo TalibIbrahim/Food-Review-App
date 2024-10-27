@@ -3,6 +3,9 @@ import "./Home.css";
 
 import BrimLogo from "../Assets/Brim.jpg";
 import TipsyLogo from "../Assets/tipsy.png";
+import DejaLogo from "../Assets/Deja.jpeg";
+import BenedictionLogo from "../Assets/Benediction.png";
+
 import RestaurantCard from "../Components/RestaurantCard";
 
 const RESTAURANT_DUMMY_DATA = [
@@ -24,13 +27,31 @@ const RESTAURANT_DUMMY_DATA = [
     location: "DHA Phase 6, Lahore",
     cuisine: "Fast Food",
   },
+  {
+    id: 3,
+    name: 'Déjà',
+    logo: DejaLogo,
+    rating: 4.2,
+    price: 3,
+    location: "DHA Phase 4, Lahore",
+    cuisine: "Cafe & Bakery",
+  },
+  {
+    id: 4,
+    name: 'Benediction',
+    logo: BenedictionLogo,
+    rating: 3.9,
+    price: 3,
+    location: "Gulberg, Lahore",
+    cuisine: "Cafe & Bakery",
+  }
 ];
 
 const Home = () => {
   return (
     <>
       <div className="backgrnd-img justify-center items-center flex " />
-      <div className="card-container flex flex-col items-center justify-between my-10">
+      <div className="card-container flex flex-col items-start px-40 justify-between my-10">
         {RESTAURANT_DUMMY_DATA.map((restaurant) => (
           <RestaurantCard
             key={restaurant.id}
