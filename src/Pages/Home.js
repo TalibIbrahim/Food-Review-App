@@ -5,7 +5,7 @@ import BrimLogo from "../Assets/Brim.jpg";
 import TipsyLogo from "../Assets/tipsy.png";
 import DejaLogo from "../Assets/Deja.jpeg";
 import BenedictionLogo from "../Assets/Benediction.png";
-
+import eggspectationLogo from "../Assets/eggspectation.jpeg";
 import RestaurantCard from "../Components/RestaurantCard";
 
 const RESTAURANT_DUMMY_DATA = [
@@ -29,7 +29,7 @@ const RESTAURANT_DUMMY_DATA = [
   },
   {
     id: 3,
-    name: 'Déjà',
+    name: "Déjà",
     logo: DejaLogo,
     rating: 4.2,
     price: 3,
@@ -38,13 +38,22 @@ const RESTAURANT_DUMMY_DATA = [
   },
   {
     id: 4,
-    name: 'Benediction',
+    name: "Benediction",
     logo: BenedictionLogo,
     rating: 3.9,
     price: 3,
     location: "Gulberg, Lahore",
     cuisine: "Cafe & Bakery",
-  }
+  },
+  {
+    id: 5,
+    name: "Eggspectation",
+    logo: eggspectationLogo,
+    rating: 4.5,
+    price: 3,
+    location: "Gulberg, Lahore",
+    cuisine: "Cafe & Bakery",
+  },
 ];
 
 const Home = () => {
