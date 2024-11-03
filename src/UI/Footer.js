@@ -41,11 +41,19 @@ const Footer = () => {
 
         <div class="footer-contacts">
           <h3 className="text-lg font-bold cursor-default">E-Mail:</h3>
-          <a href="mailto:byters@gmail.com" className="text-neutral-400">
+          <a
+            href="mailto: thehifivesquad@proton.me"
+            className="text-neutral-400"
+          >
             thehifivesquad@proton.me
           </a>
           <h3 className="text-lg font-bold cursor-default mt-3">UAN:</h3>
-          <a href="mailto:byters@gmail.com" className=" text-neutral-400"></a>
+          <a
+            href="mailto:thehifivesquad@proton.me"
+            className=" text-neutral-400"
+          >
+            thehifivesquad@proton.me
+          </a>
           <div className="flex flex-col text-neutral-400">
             <div>111-222-333</div>
           </div>
