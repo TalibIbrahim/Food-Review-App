@@ -1,9 +1,10 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import BytersLogo from "../Assets/BYTE_logo.png";
 import "./Navbar.css";
 
 const NavBar = () => {
   const location = useLocation();
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const isHomePage = location.pathname === "/";
 
@@ -66,7 +67,13 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="w-48 flex items-center justify-between">
-          <button className={defaultLoginStyle}>Login</button>
+          {/* Login Button with onClick to navigate to Login page */}
+          <button
+            className={defaultLoginStyle}
+            onClick={() => navigate("/login")} // Navigates to the Login page
+          >
+            Login
+          </button>
           <button className="button2 text-white px-4 py-2 rounded-lg">
             Sign Up
           </button>

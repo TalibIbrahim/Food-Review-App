@@ -1,0 +1,44 @@
+.backgrnd-clr {
+  background-color: #252422;
+}
+.backgrnd-clr:hover {
+  background-color: #eb5e28;
+}
+.custom-inverted-logo {
+  filter: invert(100%);
+}
+.custom-border {
+  border: 1px solid gray;
+}
+/* Custom focus ring for the input fields */
+.custom-focus-ring:focus {
+  outline: none;
+  border: 2px solid #ccc5b9; /* Adjust color to your preference */
+  box-shadow: 0 0 5px rgba(208, 194, 132, 0.5); /* Optional: adds a glow effect */
+}
+
+/* Adjust height of login card */
+.login-card {
+  height: 500px; /* Adjust this value to make the login card taller or as a square */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.login-image {
+  background-position: center;
+  background-size: cover;
+}
+
+@media (min-width: 1024px) {
+  .login-card {
+    height: 600px;
+  }
+}
+
+/* You can also adjust the card to be square for smaller screens */
+@media (max-width: 1024px) {
+  .login-card {
+    height: 400px; /* Adjust height for smaller screens */
+  }
+}
