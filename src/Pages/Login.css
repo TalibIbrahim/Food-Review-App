@@ -7,19 +7,18 @@
 .custom-inverted-logo {
   filter: invert(100%);
 }
-.custom-border {
-  border: 1px solid gray;
+.custom-font {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: medium;
 }
-/* Custom focus ring for the input fields */
 .custom-focus-ring:focus {
   outline: none;
-  border: 2px solid #ccc5b9; /* Adjust color to your preference */
-  box-shadow: 0 0 5px rgba(208, 194, 132, 0.5); /* Optional: adds a glow effect */
+  border: 2px solid #ccc5b9;
+  box-shadow: 0 0 5px rgba(208, 194, 132, 0.5);
 }
 
-/* Adjust height of login card */
 .login-card {
-  height: 500px; /* Adjust this value to make the login card taller or as a square */
+  height: 500px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -36,9 +35,8 @@
   }
 }
 
-/* You can also adjust the card to be square for smaller screens */
 @media (max-width: 1024px) {
   .login-card {
-    height: 400px; /* Adjust height for smaller screens */
+    height: 400px;
   }
 }

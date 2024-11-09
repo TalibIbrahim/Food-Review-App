@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate hook
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import loginFoodPic from "../Assets/food.jpeg"; // Make sure the image path is correct
-import { FaArrowRight } from "react-icons/fa"; // For a sliding arrow icon
+import loginFoodPic from "../Assets/food.jpeg";
+import { FaArrowRight } from "react-icons/fa";
 import BytersLogo from "../Assets/BYTE_logo.png";
 
 const Login = () => {
@@ -40,7 +40,6 @@ const Login = () => {
       <div className="flex w-full max-w-4xl bg-white rounded-2xl overflow-hidden shadow-2xl login-card">
         <div className="w-1/2 p-8 flex flex-col justify-center">
           <div className="mb-6 flex justify-center">
-            {/* <h1 className="text-4xl font-semibold text-gray-800">Byters</h1>{" "} */}
             <img
               src={BytersLogo}
               alt="brand-logo"
@@ -48,14 +47,12 @@ const Login = () => {
             />
           </div>
           <h2 className="text-2xl font-bold mb-2 text-center">WELCOME BACK</h2>{" "}
-          {/* Main Heading */}
           <p className="text-gray-600 mb-6 text-center">
             Please enter your details
           </p>{" "}
-          {/* Subheading */}
           <form onSubmit={handleLogin}>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-medium mb-2">
+              <label className="block text-gray-700 text-sm custom-font mb-2">
                 Email
               </label>
               <input
@@ -69,7 +66,7 @@ const Login = () => {
             </div>
 
             <div className="mb-6">
-              <label className="block text-gray-700 text-sm font-medium mb-2">
+              <label className="block text-gray-700 text-sm custom-font mb-2">
                 Password
               </label>
               <input
@@ -91,7 +88,6 @@ const Login = () => {
               </button>
             </div>
           </form>
-          {/* Forgot Password link */}
           <div className="mt-4 text-center">
             <a
               href="/forgot-password"
@@ -100,7 +96,6 @@ const Login = () => {
               Forgot Password?
             </a>
           </div>
-          {/* Sign Up Button */}
           <div className="mt-6 text-center">
             <button
               onClick={handleSignup}
@@ -115,7 +110,7 @@ const Login = () => {
           className="w-1/2 bg-cover bg-center login-image"
           style={{
             backgroundImage: `url(${loginFoodPic})`,
-            height: "100%", // Ensure the image takes the full height of the parent container
+            height: "100%",
           }}
         ></div>
       </div>
