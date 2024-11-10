@@ -132,7 +132,7 @@ const SignUp = () => {
                 placeholder="Enter your password"
                 required
               />
-              <label className="block text-gray-700 text-sm custom-font mb-2">
+              <label className="block text-gray-700 text-sm custom-font mb-2 pt-5">
                 Confirm Password
               </label>
               <input

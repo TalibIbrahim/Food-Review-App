@@ -13,11 +13,11 @@
 }
 
 .custom-focus-ring {
-  border: 2px solid transparent;
+  border: 1px solid gray;
 }
 .custom-focus-ring:focus {
   outline: none;
-  border: 2px solid #ccc5b9;
+  border: 1px solid #ccc5b9;
   box-shadow: 0 0 5px rgba(208, 194, 132, 0.5);
 }
 
