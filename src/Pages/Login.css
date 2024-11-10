@@ -11,6 +11,10 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: medium;
 }
+
+.custom-focus-ring {
+  border: 2px solid transparent;
+}
 .custom-focus-ring:focus {
   outline: none;
   border: 2px solid #ccc5b9;

@@ -1,14 +1,17 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import loginFoodPic from "../Assets/food.jpeg";
 import { FaArrowRight } from "react-icons/fa";
 import BytersLogo from "../Assets/BYTE_logo.png";
 
+import { Link } from "react-router-dom";
+
 const Login = () => {
-  const [email, setEmail] = useState(""); // State to hold the email input
-  const [password, setPassword] = useState(""); // State to hold the password input
-  const navigate = useNavigate(); // Navigate hook
+  const emailInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
@@ -23,16 +26,12 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault(); // Prevent form submission
 
-    console.log("Login:", email, password); // For now, just log the email and password
+    const email = emailInputRef.current.value;
+    const password = passwordInputRef.current.value;
 
-    // Here, you can add API call or validation logic for login
+    console.log(`Email: ${email}, Password: ${password}`);
 
     navigate("/home"); // Navigate to home page after successful login
-  };
-
-  // Navigate to signup page
-  const handleSignup = () => {
-    navigate("/signup"); // Navigate to signup page with sliding animation
   };
 
   return (
@@ -49,16 +48,15 @@ const Login = () => {
           <h2 className="text-2xl font-bold mb-2 text-center">WELCOME BACK</h2>{" "}
           <p className="text-gray-600 mb-6 text-center">
             Please enter your details
-          </p>{" "}
+          </p>
           <form onSubmit={handleLogin}>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm custom-font mb-2">
                 Email
               </label>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                ref={emailInputRef}
                 className="w-full px-3 py-2 border rounded focus:outline-none custom-focus-ring"
                 placeholder="Enter your email"
                 required
@@ -71,8 +69,7 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                ref={passwordInputRef}
                 className="w-full px-3 py-2 border rounded focus:outline-none custom-focus-ring"
                 placeholder="Enter your password"
                 required
@@ -82,27 +79,28 @@ const Login = () => {
             <div className="flex items-center justify-between">
               <button
                 type="submit"
-                className="backgrnd-clr text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="backgrnd-clr text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline  transition-all ease-in-out duration-300"
               >
                 Login
               </button>
             </div>
           </form>
           <div className="mt-4 text-center">
-            <a
-              href="/forgot-password"
-              className="text-sm text-blue-600 hover:underline"
+            <Link
+              to={"/forgot-password"}
+              className="text-sm text-blue-600 hover:underline transition-all ease-in-out duration-500 "
             >
               Forgot Password?
-            </a>
+            </Link>
           </div>
           <div className="mt-6 text-center">
-            <button
-              onClick={handleSignup}
-              className="text-blue-600 hover:underline flex items-center justify-center gap-2"
+            <Link
+              to={"/signup"}
+              className="text-blue-600 hover:underline flex items-center justify-start gap-2 transition-all ease-in-out duration-500"
             >
-              <span>Sign Up</span> <FaArrowRight />
-            </button>
+              <span>Sign Up</span>
+              <FaArrowRight />
+            </Link>
           </div>
         </div>
 
