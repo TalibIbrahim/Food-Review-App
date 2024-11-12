@@ -61,6 +61,9 @@ const Home = () => {
     <>
       <div className="backgrnd-img justify-center items-center flex" />
       <div className="card-container flex flex-col items-center px-40 justify-between my-10">
+        <div className="font-bold text-3xl text-center heading-text pt-10">
+          Review Your Favorite Restaurants
+        </div>
         {RESTAURANT_DUMMY_DATA.map((restaurant) => (
           <RestaurantCard
             key={restaurant.id}
