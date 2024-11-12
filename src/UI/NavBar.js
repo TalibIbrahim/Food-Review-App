@@ -2,7 +2,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useContext } from "react";
 import BytersLogo from "../Assets/BYTE_logo.png";
 import "./Navbar.css";
-import AuthContext from "../store/auth-context";
+import AuthContext from "../Store/auth-context";
 
 const NavBar = () => {
   const location = useLocation();
@@ -90,8 +90,8 @@ const NavBar = () => {
         )}
         {isLoggedIn && (
           <div className="w-48 flex items-center justify-end ">
-            <Link to={"/account"} className=" text-col rounded-full">
-              <span class="material-symbols-outlined text-5xl pt-2 mr-5">
+            <Link to={"/profile"} className=" text-col rounded-full">
+              <span className="material-symbols-outlined text-5xl pt-2 mr-5">
                 account_circle
               </span>
             </Link>

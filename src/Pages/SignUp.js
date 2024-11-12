@@ -1,13 +1,13 @@
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import BytersLogo from "../Assets/BYTE_logo.png";
 import loginFoodPic from "../Assets/food.jpeg";
 
 const SignUp = () => {
   const navigate = useNavigate();
 
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
 
   const emailInputRef = useRef(null);
   const firstNameRef = useRef(null);
@@ -15,8 +15,12 @@ const SignUp = () => {
   const userNameRef = useRef(null);
   const passwordInputRef = useRef(null);
   const confirmPasswordInputRef = useRef(null);
+
+  const [error, setError] = useState(""); // New state for storing error messages
+
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setError("");
 
     const enteredEmail = emailInputRef.current.value;
     const firstName = firstNameRef.current.value;
@@ -27,7 +31,7 @@ const SignUp = () => {
 
     // check if the passwords match
     if (enteredPassword !== confirmPassword) {
-      alert("Passwords do not match");
+      setError("Passwords do not match");
       return;
     }
 
@@ -54,25 +58,55 @@ const SignUp = () => {
       // handle response from Firebase
       if (res.ok) {
         const data = await res.json();
-        // handle login logic
-        console.log("User created successfully:", data);
-        navigate("/login");
+
+        const userUid = data.localId; // Firebase provides a unique UID for each user
+        const idToken = data.idToken; // Firebase ID token
+
+        // Save user data in Firestore (or Realtime Database)
+        const userData = {
+          firstName,
+          lastName,
+          userName,
+          email: enteredEmail,
+          uid: userUid,
+          reviews: [],
+        };
+
+        const saveUserDataRes = await fetch(
+          `https://food-review-db0dd-default-rtdb.firebaseio.com/users/${userUid}.json?auth=${idToken}`,
+          {
+            method: "PUT", // Use PUT to store the data at the specified path
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData), // Store the user data
+          }
+        );
+
+        console.log(saveUserDataRes);
+
+        if (saveUserDataRes.ok) {
+          console.log("User data saved to the database successfully!");
+          navigate("/login");
+        } else {
+          throw new Error("Failed to save user data to the database");
+        }
       } else {
         const data = await res.json();
 
         // handle errors based on the response data
         if (data.error && data.error.message === "EMAIL_EXISTS") {
-          alert("This email is already in use.");
+          setError("This email is already in use.");
         } else if (data.error && data.error.message.includes("WEAK_PASSWORD")) {
-          alert("Password should be at least 6 characters.");
+          setError("Password should be at least 6 characters.");
         } else {
-          alert("Failed to sign up. Please try again.");
+          setError("Failed to sign up. Please try again.");
         }
       }
     } catch (error) {
       // catch any errors that occur during the fetch process
       console.error("Error during sign-up:", error);
-      alert("Something went wrong. Please try again.");
+      setError("Something went wrong. Please try again.");
     }
 
     console.log({
@@ -114,6 +148,9 @@ const SignUp = () => {
           <p className="text-gray-600 mb-6 text-center">
             Please enter your details
           </p>
+
+          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+
           <form onSubmit={handleSignUp}>
             <div className="flex flex-row items-center justify-between pb-5">
               <div>

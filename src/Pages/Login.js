@@ -5,13 +5,13 @@ import loginFoodPic from "../Assets/food.jpeg";
 import { FaArrowRight } from "react-icons/fa";
 import BytersLogo from "../Assets/BYTE_logo.png";
 import { Link } from "react-router-dom";
-import AuthContext from "../store/auth-context";
+import AuthContext from "../Store/auth-context";
 
 const Login = () => {
   const emailInputRef = useRef(null);
   const passwordInputRef = useRef(null);
 
-  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
 
   const authCtx = useContext(AuthContext);
 
@@ -45,24 +45,27 @@ const Login = () => {
           body: JSON.stringify({
             email: enteredEmail,
             password: enteredPassword,
-            returnSecureToken: true, // Ensure you get an ID token
+            returnSecureToken: true,
           }),
         }
       );
 
       const data = await response.json();
 
-      if (response.ok) {
-        // If login is successful, store the user token and navigate
-        // console.log("Logged in:", data);
-        // localStorage.setItem("token", data.idToken);
-        authCtx.login(data.idToken);
-        navigate("/");
-        console.log("Logged in:", data);
-      } else {
-        // Handle errors (invalid email/password)
-        alert(data.error.message);
+      if (!response.ok) {
+        const errorMessage = data.error ? data.error.message : "Login failed!";
+        alert(errorMessage);
+        return;
       }
+
+      // Correct the expiration time multiplication
+      const expirationTime = new Date(
+        new Date().getTime() + +data.expiresIn * 1000 // Convert seconds to milliseconds
+      );
+
+      authCtx.login(data.idToken, data.localId, expirationTime.toISOString());
+      navigate("/", { replace: true });
+      console.log("Logged in:", data);
     } catch (error) {
       console.error("Login error:", error);
       alert("Something went wrong, please try again!");
@@ -90,7 +93,7 @@ const Login = () => {
                 Email
               </label>
               <input
-                type="text"
+                type="email"
                 ref={emailInputRef}
                 className="w-full px-3 py-2 border rounded focus:outline-none custom-focus-ring"
                 placeholder="Enter your email"

@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-neutral-900 text-white p-24 px-44">
-      <div class="footer-content flex flex-row justify-between items-center">
-        <div class="footer-brand flex flex-row justify-center items-center">
+      <div className="footer-content flex flex-row justify-between items-center">
+        <div className="footer-brand flex flex-row justify-center items-center">
           <img
             src={BytersLogo}
             alt="brand-logo"
@@ -14,7 +14,7 @@ const Footer = () => {
           />
         </div>
 
-        <div class="footer-links flex flex-row justify-around w-96 items-center mt-8 text-center custom-transition">
+        <div className="footer-links flex flex-row justify-around w-96 items-center mt-8 text-center custom-transition">
           <ul>
             <li>
               <Link to="/contact">Contact Us</Link>
@@ -39,7 +39,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div class="footer-contacts">
+        <div className="footer-contacts">
           <h3 className="text-lg font-bold cursor-default">E-Mail:</h3>
           <a
             href="mailto: thehifivesquad@proton.me"

@@ -13,3 +13,10 @@
     ),
     url("../Assets/pizza.jpg"); /* Update this path */
 }
+
+.heading-text {
+  border-bottom: 3px solid #eb5e28;
+  max-width: 90%;
+  width: 90%;
+  padding-bottom: 1.1em;
+}

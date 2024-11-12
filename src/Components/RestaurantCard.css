@@ -10,4 +10,9 @@
 }
 .custom-button-bg {
   background-color: #403d39;
+  transition: all ease-in-out 0.3s;
+}
+
+.custom-button-bg:hover {
+  background-color: #eb5e28;
 }

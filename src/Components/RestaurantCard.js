@@ -36,7 +36,7 @@ const RestaurantCard = (props) => {
         </div>
       </div>
       <div>
-        <button className="text-lg custom-button-bg text-white p-3 px-5 rounded-xl mt-32">
+        <button className="text-lg custom-button-bg text-white p-3 px-5 rounded-xl mt-32 hover:shadow-lg">
           View
         </button>
       </div>
