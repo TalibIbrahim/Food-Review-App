@@ -7,33 +7,79 @@ import loginFoodPic from "../Assets/food.jpeg";
 const SignUp = () => {
   const navigate = useNavigate();
 
+  const apiKey = process.env.REACT_APP_API_KEY;
+
   const emailInputRef = useRef(null);
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const userNameRef = useRef(null);
   const passwordInputRef = useRef(null);
   const confirmPasswordInputRef = useRef(null);
-
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
-    const email = emailInputRef.current.value;
+    const enteredEmail = emailInputRef.current.value;
     const firstName = firstNameRef.current.value;
     const lastName = lastNameRef.current.value;
     const userName = userNameRef.current.value;
-    const password = passwordInputRef.current.value;
+    const enteredPassword = passwordInputRef.current.value;
     const confirmPassword = confirmPasswordInputRef.current.value;
 
-    const data = {
-      name: firstName + " " + lastName,
-      email,
-      username: userName,
-      password,
-      confirmPassword,
-    };
-    console.log(data);
+    // check if the passwords match
+    if (enteredPassword !== confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
 
-    navigate("/login"); // Navigate to login page after successful sign up
+    // response body for Firebase Authentication API
+    const firebaseAuthData = {
+      email: enteredEmail,
+      password: enteredPassword,
+      returnSecureToken: true,
+    };
+
+    try {
+      // send request to Firebase Authentication API to create a new user
+      const res = await fetch(
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(firebaseAuthData),
+        }
+      );
+
+      // handle response from Firebase
+      if (res.ok) {
+        const data = await res.json();
+        // handle login logic
+        console.log("User created successfully:", data);
+        navigate("/login");
+      } else {
+        const data = await res.json();
+
+        // handle errors based on the response data
+        if (data.error && data.error.message === "EMAIL_EXISTS") {
+          alert("This email is already in use.");
+        } else if (data.error && data.error.message.includes("WEAK_PASSWORD")) {
+          alert("Password should be at least 6 characters.");
+        } else {
+          alert("Failed to sign up. Please try again.");
+        }
+      }
+    } catch (error) {
+      // catch any errors that occur during the fetch process
+      console.error("Error during sign-up:", error);
+      alert("Something went wrong. Please try again.");
+    }
+
+    console.log({
+      name: `${firstName} ${lastName}`,
+      email: enteredEmail,
+      username: userName,
+    });
   };
 
   useEffect(() => {

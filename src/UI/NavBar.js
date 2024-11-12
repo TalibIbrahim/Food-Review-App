@@ -1,9 +1,19 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
+import { useContext } from "react";
 import BytersLogo from "../Assets/BYTE_logo.png";
 import "./Navbar.css";
+import AuthContext from "../store/auth-context";
 
 const NavBar = () => {
   const location = useLocation();
+
+  const authCtx = useContext(AuthContext);
+
+  const isLoggedIn = authCtx.isLoggedIn;
+
+  const logoutHandler = () => {
+    authCtx.logout();
+  };
 
   const isHomePage = location.pathname === "/";
 
@@ -37,7 +47,7 @@ const NavBar = () => {
             <img src={BytersLogo} alt="brand-logo" className={logoStyle} />{" "}
           </Link>
         </div>
-        <div>
+        <div className="ml-32">
           <ul className="flex items-center justify-between ">
             <NavLink
               to="/"
@@ -65,21 +75,31 @@ const NavBar = () => {
             </NavLink>
           </ul>
         </div>
-        <div className="w-48 flex items-center justify-between">
-          {/* Login Button with onClick to navigate to Login page */}
-          <Link
-            className={defaultLoginStyle}
-            to={"/login"} // Navigates to the Login page
-          >
-            Login
-          </Link>
-          <Link
-            to={"/signup"}
-            className="button2 text-white px-4 py-2 rounded-lg"
-          >
-            Sign Up
-          </Link>
-        </div>
+        {!isLoggedIn && (
+          <div className="w-48 flex items-center justify-between">
+            <Link className={defaultLoginStyle} to={"/login"}>
+              Login
+            </Link>
+            <Link
+              to={"/signup"}
+              className="button2 text-white px-4 py-2 rounded-lg"
+            >
+              Sign Up
+            </Link>
+          </div>
+        )}
+        {isLoggedIn && (
+          <div className="w-48 flex items-center justify-end ">
+            <Link to={"/account"} className=" text-col rounded-full">
+              <span class="material-symbols-outlined text-5xl pt-2 mr-5">
+                account_circle
+              </span>
+            </Link>
+            <button className={defaultLoginStyle} onClick={logoutHandler}>
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </nav>
   );

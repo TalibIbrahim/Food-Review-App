@@ -70,3 +70,7 @@
 .custom-transition {
   transition: ease-in-out 0.3s;
 }
+
+.text-col {
+  color: #eb5e28;
+}
